@@ -17,6 +17,9 @@ import com.ssafy.happyhouse.model.HouseInfoDto;
 import com.ssafy.happyhouse.model.SidoGugunCodeDto;
 import com.ssafy.happyhouse.model.service.HouseMapService;
 
+@RestController
+@RequestMapping("/map")
+@CrossOrigin("*")
 public class HouseMapController {
 	
 	private final Logger logger = LoggerFactory.getLogger(HouseMapController.class);
