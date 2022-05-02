@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.AnnouncementMapper">
+
+	<select id="getAnnouncementList" resultType="announcementDto">
+		select announcementNo, userid, subject, content, regtime
+		from announcement
+		order by announcementNo DESC
+	</select>
+	
+	<select id="getAnnouncementSearchList" parameterType="string" resultType="announcementDto">
+		select announcementNo, userid, subject, content, regtime 
+		from announcement
+		WHERE subject LIKE '%'+#{subject}+'%'
+		order by announcementNo DESC
+	</select>
+	
+	<select id="getAnnouncementInfo" parameterType="int" resultType="announcementDto">
+		select announcementNo, userid, subject, content, regtime 
+		from announcement
+		WHERE announcementNo=#{announcementNo}
+		order by announcementNo DESC
+	</select>
+	
+</mapper>

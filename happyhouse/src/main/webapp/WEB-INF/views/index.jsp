@@ -40,9 +40,9 @@
 						<a class="dropdown-item" href="#">상권 정보</a>
 						<a class="dropdown-item" href="#">환경 정보</a>
 					</div></li>
-				<li class="nav-item"><a class="nav-link" href="#">Notice</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">News</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+				<li class="nav-item"><a class="nav-link" href="${root}/announcement/list">Notice</a></li>
+				<li class="nav-item"><a class="nav-link" href="${root}/news/list">News</a></li>
+				<li class="nav-item"><a class="nav-link" href="${root}/contact">Contact</a></li>
 			</ul>
 			<ul class="navbar-nav">
 				<c:if test="${empty userinfo}">
