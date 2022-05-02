@@ -153,7 +153,8 @@
 							,function(data, status){
 								$("tbody").empty();
 								$.each(data, function(index, vo) {
-									let str = `
+									console.log(vo.aptCode);
+									/*let str = `
 										<tr class="${colorArr[index%3]}">
 										<td>${vo.aptCode}</td>
 										<td>${vo.aptName}</td>
@@ -161,7 +162,8 @@
 										<td>${vo.buildYear}</td>
 										<td>${vo.recentPrice}</td>
 									`;
-									$("tbody").append(str);
+									$("tbody").append(str);*/
+									$("tbody").append("<tr class='colorArr[index%3]'>").append("<td>").append(vo.aptCode).append("</td>").append("<td>").append(vo.aptName).append("</td>").append("<td>").append(vo.sidoName).append(" ").append(vo.gugunName).append(" ").append(vo.dongName).append(" ").append(vo.jibun).append("</td>").append("<td>").append(vo.buildYear).append("</td>").append("<td>").append(vo.recentPrice).append("</td>");
 								});
 								displayMarkers(data);
 							}
