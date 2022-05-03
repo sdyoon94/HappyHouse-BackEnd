@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -9,15 +8,13 @@
 <title>Framework Project</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="img/favicon.ico">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/apt.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
 </head>
 <body>
 	<div class="container">
@@ -25,20 +22,12 @@
 			<img id="logo" src="/img/happyhouse.png">
 		</header>
 		<!-- nav start -->
-		<nav
-			class="navbar navbar-expand-sm bg-dark navbar-dark rounded justify-content-between">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark rounded justify-content-between">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbardrop"
-					data-toggle="dropdown"> 동네 정보 </a>
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> 동네 정보 </a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">APT 매매</a>
-						<a class="dropdown-item" href="#">APT 전월세</a>
-						<a class="dropdown-item" href="#">주택 매매</a>
-						<a class="dropdown-item" href="#">주택 전월세</a>
-						<a class="dropdown-item" href="#">상권 정보</a>
-						<a class="dropdown-item" href="#">환경 정보</a>
+						<a class="dropdown-item" href="#">APT 매매</a> <a class="dropdown-item" href="#">APT 전월세</a> <a class="dropdown-item" href="#">주택 매매</a> <a class="dropdown-item" href="#">주택 전월세</a> <a class="dropdown-item" href="#">상권 정보</a> <a class="dropdown-item" href="#">환경 정보</a>
 					</div></li>
 				<li class="nav-item"><a class="nav-link" href="${root}/announcement/list">Notice</a></li>
 				<li class="nav-item"><a class="nav-link" href="${root}/news/list">News</a></li>
@@ -46,19 +35,13 @@
 			</ul>
 			<ul class="navbar-nav">
 				<c:if test="${empty userinfo}">
-					<li class="nav-item"><a class="nav-link"
-						href="${root}/user/register">회원가입</a>
-					<li class="nav-item"><a class="nav-link"
-						href="${root}/user/login">로그인</a>
+					<li class="nav-item"><a class="nav-link" href="${root}/user/register">회원가입</a>
+					<li class="nav-item"><a class="nav-link" href="${root}/user/login">로그인</a>
 				</c:if>
 				<c:if test="${!empty userinfo}">
-					<li class="nav-item text-white"><strong>${userinfo.userName}</strong>
-						(${userinfo.userId})님 안녕하세요.
-					<li class="nav-item"><a class="nav-link"
-						href="${root}/user/logout">로그아웃</a> <c:if
-							test="${userinfo.userId eq 'admin'}">
-							<li class="nav-item"><a class="nav-link"
-								href="${root}/user/list">회원목록</a>
+					<li class="nav-item text-white"><strong>${userinfo.userName}</strong> (${userinfo.userId})님 안녕하세요.
+					<li class="nav-item"><a class="nav-link" href="${root}/user/logout">로그아웃</a> <c:if test="${userinfo.userId eq 'admin'}">
+							<li class="nav-item"><a class="nav-link" href="${root}/user/list">회원목록</a>
 						</c:if>
 				</c:if>
 			</ul>
@@ -74,14 +57,16 @@
 				<c:if test="${!empty userinfo}">
 					<div class="card-body">
 						<div class="form-group form-inline justify-content-center">
-							<label class="mr-2" for="sido">시도 : </label> <select
-								class="form-control" id="sido">
+							<label class="mr-2" for="sido">시도 : </label>
+							<select class="form-control" id="sido">
 								<option value="0">선택</option>
-							</select> <label class="mr-2 ml-3" for="gugun">구군 : </label> <select
-								class="form-control" id="gugun">
+							</select>
+							<label class="mr-2 ml-3" for="gugun">구군 : </label>
+							<select class="form-control" id="gugun">
 								<option value="0">선택</option>
-							</select> <label class="mr-2 ml-3" for="dong">읍면동 : </label> <select
-								class="form-control" id="dong">
+							</select>
+							<label class="mr-2 ml-3" for="dong">읍면동 : </label>
+							<select class="form-control" id="dong">
 								<option value="0">선택</option>
 							</select>
 							<!-- <button type="button" id="aptSearchBtn">검색</button> -->
@@ -106,8 +91,7 @@
 							<tbody id="searchResult"></tbody>
 						</table>
 						<div id="map" style="width: 100%; height: 500px;"></div>
-						<script type="text/javascript"
-							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a367219b897c9cd2d9e3880107f26a55&libraries=services"></script>
+						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a367219b897c9cd2d9e3880107f26a55&libraries=services"></script>
 						<script type="text/javascript" src="js/map.js"></script>
 						<script type="text/javascript">
 				let colorArr = ['table-primary','table-success','table-danger'];
@@ -153,17 +137,15 @@
 							,function(data, status){
 								$("tbody").empty();
 								$.each(data, function(index, vo) {
-									console.log(vo.aptCode);
-									/*let str = `
-										<tr class="${colorArr[index%3]}">
-										<td>${vo.aptCode}</td>
-										<td>${vo.aptName}</td>
-										<td>${vo.sidoName} ${vo.gugunName} ${vo.dongName} ${vo.jibun}</td>
-										<td>${vo.buildYear}</td>
-										<td>${vo.recentPrice}</td>
+									let str = `
+										<tr class="\${colorArr[index%3]}">
+										<td>\${vo.aptCode}</td>
+										<td>\${vo.aptName}</td>
+										<td>\${vo.sidoName} ${vo.gugunName} ${vo.dongName} ${vo.jibun}</td>
+										<td>\${vo.buildYear}</td>
+										<td>\${vo.recentPrice}</td>
 									`;
-									$("tbody").append(str);*/
-									$("tbody").append("<tr class='colorArr[index%3]'>").append("<td>").append(vo.aptCode).append("</td>").append("<td>").append(vo.aptName).append("</td>").append("<td>").append(vo.sidoName).append(" ").append(vo.gugunName).append(" ").append(vo.dongName).append(" ").append(vo.jibun).append("</td>").append("<td>").append(vo.buildYear).append("</td>").append("<td>").append(vo.recentPrice).append("</td>");
+									$("tbody").append(str);
 								});
 								displayMarkers(data);
 							}
