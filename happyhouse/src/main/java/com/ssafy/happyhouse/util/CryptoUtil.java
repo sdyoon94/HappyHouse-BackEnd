@@ -31,3 +31,13 @@ public class CryptoUtil {
 //단방향 알고리즘엔 MD5, SHA 시리즈가 있다.
 //MD5는 보안 취약점이 발견된 알고리즘이므로 SHA 계열을 선택했고
 //그 중에서도 가장 긴 Bit수를 사용하는 SHA-512를 선택하였다.
+
+
+//SHA-512 적용 결과
+//password = "testtest"
+//El1tA7MshNSSdH95zwv24XnSh/NBOE611tMZdSWta+jm3wEWAyk1aY+ZoJ4mUHPR1sMsJ0WRvx0KIK1ny6khvA==
+//
+//password = "asdasdasd"
+//LweP9PNKPB1Zo90erIXmKckoAIFLtELoGqNmhJ5Z8AiLiArzqy4f8d/C5cFSFwRL7Ce2GhXSWaf8tBPlBnql6A==
+//
+//일단 88자로 결과나오는듯
