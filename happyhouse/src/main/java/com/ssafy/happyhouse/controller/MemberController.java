@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssafy.happyhouse.model.MemberDto;
 import com.ssafy.happyhouse.model.service.MemberService;
+import com.ssafy.happyhouse.util.CryptoUtil;
 
 //회원 처리용 controller
 @Controller
@@ -48,6 +49,7 @@ public class MemberController {
 	@PostMapping("/register")
 	public String register(MemberDto memberDto, Model model) throws Exception {
 		logger.debug("memberDto info : {}", memberDto);
+		memberDto.setUserPwd(CryptoUtil.sha512(memberDto.getUserPwd()));
 		memberService.registerMember(memberDto);
 		return "redirect:/user/login";
 	}
@@ -61,6 +63,9 @@ public class MemberController {
 	public String login(@RequestParam Map<String, String> map, Model model, HttpSession session,
 			HttpServletResponse response) throws Exception {
 		logger.debug("map : {}", map.get("userId"));
+		System.out.println(map.get("userPwd"));
+		map.replace("userPwd", CryptoUtil.sha512(map.get("userPwd")));
+		System.out.println(map.get("userPwd"));
 		MemberDto memberDto = memberService.login(map);
 		if (memberDto != null) {
 			session.setAttribute("userinfo", memberDto);
