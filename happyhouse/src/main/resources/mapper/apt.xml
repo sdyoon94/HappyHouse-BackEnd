@@ -36,4 +36,9 @@
 		order by aptName
 	</select>
 	
+	<select id="getStationList" resultType="stationDto">
+		select line, name, lat, lng
+		from `station_coordinate`
+	</select>
+	
 </mapper>

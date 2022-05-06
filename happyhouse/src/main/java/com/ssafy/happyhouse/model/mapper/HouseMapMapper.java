@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ssafy.happyhouse.model.HouseInfoDto;
 import com.ssafy.happyhouse.model.SidoGugunCodeDto;
+import com.ssafy.happyhouse.model.StationDto;
 
 public interface HouseMapMapper {
 
@@ -12,5 +13,5 @@ public interface HouseMapMapper {
 	List<SidoGugunCodeDto> getGugunInSido(String sido) throws SQLException;
 	List<HouseInfoDto> getDongInGugun(String gugun) throws SQLException;
 	List<HouseInfoDto> getAptInDong(String dong) throws SQLException;
-	
+	List<StationDto> getStationList() throws SQLException;
 }
