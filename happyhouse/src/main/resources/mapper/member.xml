@@ -6,35 +6,35 @@
 
 	<select id="idCheck" parameterType="string" resultType="int">
 		select count(userid)
-		from member
+		from `member`
 		where userid = #{userid}
 	</select>
 
 	<insert id="registerMember" parameterType="MemberDto">
-		insert into member (userid, username, userpwd, email, joindate)
+		insert into `member` (userid, username, userpwd, email, joindate)
 		values (#{userId}, #{userName}, #{userPwd}, #{email}, now())
 	</insert>
 
 	<select id="login" parameterType="map" resultType="MemberDto">
 		select username, userid, email
-		from member
+		from `member`
 		where userid = #{userId} and userpwd = #{userPwd}
 	</select>
 	
 	<select id="listMember" resultType="memberDto">
 		select userid, userpwd, username, email, date_format(joindate, '%y.%m.%d') joindate
-		from member
+		from `member`
 		order by joindate desc;
 	</select>
 	
 	<select id="getMember" parameterType="String" resultType="memberdto">
 		select userid, userpwd, username, email, date_format(joindate, '%y.%m.%d') joindate
-		from member
+		from `member`
 		where userid = #{userid}
 	</select>
 	
 	<update id="updateMember" parameterType="MemberDto">
-		update member
+		update `member`
 		<trim prefix="set" suffixOverrides=",">
 			<if test="userPwd != null">userpwd = #{userPwd},</if>
 			<if test="email != null">email = #{email},</if>
@@ -43,7 +43,7 @@
 	</update>
 	
 	<delete id="deleteMember" parameterType="String">
-		delete from member
+		delete from `member`
 		where userid = #{userid}
 	</delete>
 	
