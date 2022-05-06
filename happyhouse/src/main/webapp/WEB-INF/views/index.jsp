@@ -73,19 +73,21 @@
 						</div>
 						<table class="table mt-2">
 							<colgroup>
-								<col width="100">
-								<col width="150">
+								<col width="70">
+								<col width="200">
 								<col width="*">
 								<col width="120">
 								<col width="120">
+								<col width="250">
 							</colgroup>
 							<thead>
 								<tr>
-									<th>번호</th>
-									<th>아파트이름</th>
+									<th class="text-center">번호</th>
+									<th class="text-center">아파트이름</th>
 									<th class="text-center">주소</th>
-									<th>건축연도</th>
-									<th>최근거래금액</th>
+									<th class="text-center">건축연도</th>
+									<th class="text-center">최근거래금액</th>
+									<th class="text-center">인근 지하철역</th>
 								</tr>
 							</thead>
 							<tbody id="searchResult"></tbody>
@@ -132,11 +134,12 @@
                                     $.each(data, function(index, vo) {
                                         let str = `
 										<tr>
-										<td>\${vo.aptCode}</td>
-										<td>\${vo.aptName}</td>
-										<td>\${vo.sidoName} \${vo.gugunName} \${vo.dongName} \${vo.jibun}</td>
-										<td>\${vo.buildYear}</td>
-										<td>\${vo.recentPrice}</td>
+										<td class="text-center">\${vo.aptCode}</td>
+										<td class="text-center">\${vo.aptName}</td>
+										<td class="text-center">\${vo.sidoName} \${vo.gugunName} \${vo.dongName} \${vo.jibun}</td>
+										<td class="text-center">\${vo.buildYear}</td>
+										<td class="text-center">\${vo.recentPrice}</td>
+										<td class="text-center">\${vo.subwayLine} \${vo.subwayName}역 \${Math.round(vo.subwayDistance * 1000)/1000}km</td>
 									`;
                                         $("tbody").append(str);
                                     });

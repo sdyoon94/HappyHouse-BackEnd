@@ -3,8 +3,8 @@ package com.ssafy.happyhouse.model;
 public class StationDto {
 	private String line;
 	private String name;
-	private double lat;
-	private double lng;
+	private String lat;
+	private String lng;
 
 	public String getLine() {
 		return line;
@@ -22,19 +22,19 @@ public class StationDto {
 		this.name = name;
 	}
 
-	public double getLat() {
+	public String getLat() {
 		return lat;
 	}
 
-	public void setLat(double lat) {
+	public void setLat(String lat) {
 		this.lat = lat;
 	}
 
-	public double getLng() {
+	public String getLng() {
 		return lng;
 	}
 
-	public void setLng(double lng) {
+	public void setLng(String lng) {
 		this.lng = lng;
 	}
 

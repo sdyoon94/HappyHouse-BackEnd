@@ -1,13 +1,17 @@
 package com.ssafy.happyhouse.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.happyhouse.model.HouseInfoDto;
+import com.ssafy.happyhouse.model.HouseSubwayDto;
 import com.ssafy.happyhouse.model.SidoGugunCodeDto;
+import com.ssafy.happyhouse.model.StationDto;
 import com.ssafy.happyhouse.model.mapper.HouseMapMapper;
+import com.ssafy.happyhouse.util.DistanceUtil;
 
 @Service
 public class HouseMapServiceImpl implements HouseMapService {
@@ -31,9 +35,36 @@ public class HouseMapServiceImpl implements HouseMapService {
 	}
 
 	@Override
-	public List<HouseInfoDto> getAptInDong(String dong) throws Exception {
-		
-		return houseMapMapper.getAptInDong(dong);
+	public List<HouseSubwayDto> getAptInDong(String dong) throws Exception {
+		List<HouseInfoDto> houseList = houseMapMapper.getAptInDong(dong);
+		List<StationDto> stationList = houseMapMapper.getStationList();
+		List<HouseSubwayDto> hsList = new ArrayList<HouseSubwayDto>();
+		for(HouseInfoDto i : houseList) {
+			HouseSubwayDto tmp = new HouseSubwayDto();
+			tmp.setAptCode(i.getAptCode());
+			tmp.setAptName(i.getAptName());
+			tmp.setDongCode(i.getDongCode());
+			tmp.setDongName(i.getDongName());
+			tmp.setSidoName(i.getSidoName());
+			tmp.setGugunName(i.getGugunName());
+			tmp.setBuildYear(i.getBuildYear());
+			tmp.setJibun(i.getJibun());
+			tmp.setLat(i.getLat());
+			tmp.setLng(i.getLng());
+			tmp.setImg(i.getImg());
+			tmp.setRecentPrice(i.getRecentPrice());
+			tmp.setSubwayDistance(Double.MAX_VALUE);
+			for(StationDto j : stationList) {
+				double distance = DistanceUtil.haversine(Double.parseDouble(tmp.getLat()), Double.parseDouble(tmp.getLng()), Double.parseDouble(j.getLat()), Double.parseDouble(j.getLng()));
+				if(tmp.getSubwayDistance() > distance) {
+					tmp.setSubwayLine(j.getLine());
+					tmp.setSubwayName(j.getName());
+					tmp.setSubwayDistance(distance);
+				}
+			}
+			hsList.add(tmp);
+		}
+		return hsList;
 	}
 
 }
