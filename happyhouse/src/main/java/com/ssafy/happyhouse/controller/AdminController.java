@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.happyhouse.model.MemberDto;
 import com.ssafy.happyhouse.model.service.MemberService;
+import com.ssafy.happyhouse.util.CryptoUtil;
 
 @RestController
 @RequestMapping("/admin")
@@ -53,6 +54,9 @@ public class AdminController {
 	
 	@PutMapping("/user")
 	public ResponseEntity<?> userModify(@RequestBody MemberDto memberDto) throws Exception {
+		String temppw=memberDto.getUserPwd();
+		CryptoUtil cu=new CryptoUtil();
+		memberDto.setUserPwd(cu.sha512(temppw));
 		memberService.updateMember(memberDto);
 		return new ResponseEntity<List<MemberDto>>(memberService.listMember(), HttpStatus.OK);
 	}
