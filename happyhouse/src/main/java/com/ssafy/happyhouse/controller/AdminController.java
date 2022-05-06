@@ -55,8 +55,7 @@ public class AdminController {
 	@PutMapping("/user")
 	public ResponseEntity<?> userModify(@RequestBody MemberDto memberDto) throws Exception {
 		String temppw=memberDto.getUserPwd();
-		CryptoUtil cu=new CryptoUtil();
-		memberDto.setUserPwd(cu.sha512(temppw));
+		memberDto.setUserPwd(CryptoUtil.sha512(temppw));
 		memberService.updateMember(memberDto);
 		return new ResponseEntity<List<MemberDto>>(memberService.listMember(), HttpStatus.OK);
 	}
