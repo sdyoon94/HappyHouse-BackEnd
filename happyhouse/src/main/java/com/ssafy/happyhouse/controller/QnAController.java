@@ -77,4 +77,10 @@ public class QnAController {
 		qnaService.deleteQnA(qnaIndex);
 		return new ResponseEntity<List<QnADto>>(qnaService.getQnAList(), HttpStatus.OK);
 	}
+	
+	@PostMapping("/comment/{qnaIndex}")
+	public ResponseEntity<?> registerComment(@RequestBody CommentDto commentDto, @PathVariable int qnaIndex) throws Exception{
+		commentService.registerComment(commentDto);
+		return getQnADetail(qnaIndex);
+	}
 }
