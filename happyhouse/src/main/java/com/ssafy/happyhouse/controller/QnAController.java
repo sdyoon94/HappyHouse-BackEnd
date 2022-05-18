@@ -57,10 +57,10 @@ public class QnAController {
 
 	@GetMapping("/comment/{qnaIndex}")
 	public ResponseEntity<?> getCommentList(@PathVariable int qnaIndex) throws Exception {
-		List<CommentDto> list = commentService.getCommentList(qnaIndex);
-		if (list != null && !list.isEmpty()) {
+		try {
+			List<CommentDto> list = commentService.getCommentList(qnaIndex);
 			return new ResponseEntity<List<CommentDto>>(list, HttpStatus.OK);
-		} else {
+		} catch (Exception e) {
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		}
 	}
@@ -70,9 +70,9 @@ public class QnAController {
 		qnaService.updateQnA(qnaDto);
 		return new ResponseEntity<List<QnADto>>(qnaService.getQnAList(), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping("/{qnaIndex}")
-	public ResponseEntity<?> deleteQnA(@PathVariable int qnaIndex) throws Exception{
+	public ResponseEntity<?> deleteQnA(@PathVariable int qnaIndex) throws Exception {
 		qnaService.deleteQnA(qnaIndex);
 		return new ResponseEntity<List<QnADto>>(qnaService.getQnAList(), HttpStatus.OK);
 	}
