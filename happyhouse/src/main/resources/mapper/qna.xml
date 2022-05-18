@@ -11,7 +11,7 @@
 	<select id="getQnAList" resultType="QnADto">
 		select QnAIndex, userId, QnARegtime, QnATitle, QnAContent, private
 		from `QnA`
-		order by QnAIndex desc;
+		order by QnAIndex desc
 	</select>
 	
 	<select id="getQnADetail" parameterType="int" resultType="QnADto">
