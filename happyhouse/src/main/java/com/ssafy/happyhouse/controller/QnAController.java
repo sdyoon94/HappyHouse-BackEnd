@@ -21,7 +21,7 @@ import com.ssafy.happyhouse.model.service.CommentService;
 import com.ssafy.happyhouse.model.service.QnAService;
 
 @RestController
-@RequestMapping("/QnA")
+@RequestMapping("/qna")
 @CrossOrigin("*")
 public class QnAController {
 
