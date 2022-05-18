@@ -29,13 +29,13 @@ public class QnAController {
 	private QnAService qnaService;
 	private CommentService commentService;
 
-	@PostMapping("/")
+	@PostMapping
 	public ResponseEntity<?> registerQnA(QnADto qnaDto) throws Exception {
 		qnaService.registerQnA(qnaDto);
 		return new ResponseEntity<List<QnADto>>(qnaService.getQnAList(), HttpStatus.OK);
 	}
 
-	@GetMapping("/")
+	@GetMapping
 	public ResponseEntity<?> getQnAList() throws Exception {
 		List<QnADto> list = qnaService.getQnAList();
 		if (list != null && !list.isEmpty()) {
@@ -65,7 +65,7 @@ public class QnAController {
 		}
 	}
 
-	@PutMapping("/")
+	@PutMapping
 	public ResponseEntity<?> updateQnA(@RequestBody QnADto qnaDto) throws Exception {
 		qnaService.updateQnA(qnaDto);
 		return new ResponseEntity<List<QnADto>>(qnaService.getQnAList(), HttpStatus.OK);
