@@ -27,10 +27,11 @@ public class QnAController {
 
 	@Autowired
 	private QnAService qnaService;
+	@Autowired
 	private CommentService commentService;
 
 	@PostMapping
-	public ResponseEntity<?> registerQnA(QnADto qnaDto) throws Exception {
+	public ResponseEntity<?> registerQnA(@RequestBody QnADto qnaDto) throws Exception {
 		qnaService.registerQnA(qnaDto);
 		return new ResponseEntity<List<QnADto>>(qnaService.getQnAList(), HttpStatus.OK);
 	}
@@ -57,10 +58,10 @@ public class QnAController {
 
 	@GetMapping("/comment/{qnaIndex}")
 	public ResponseEntity<?> getCommentList(@PathVariable int qnaIndex) throws Exception {
-		try {
-			List<CommentDto> list = commentService.getCommentList(qnaIndex);
+		List<CommentDto> list = commentService.getCommentList(qnaIndex);
+		if (list != null) {
 			return new ResponseEntity<List<CommentDto>>(list, HttpStatus.OK);
-		} catch (Exception e) {
+		} else {
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		}
 	}

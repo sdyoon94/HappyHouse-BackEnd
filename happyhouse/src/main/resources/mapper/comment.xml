@@ -8,10 +8,10 @@
 		values (#{commentContent}, now(), #{QnAIndex})
 	</insert>
 	
-	<select id="getCommentList" resultType="CommentDto">
+	<select id="getCommentList" parameterType="int" resultType="CommentDto">
 		select commentIndex, commentContent, commentRegtime, QnAIndex
 		from `comment`
-		where QnAIndex = #{QnAIndex}
+		where QnAIndex = #{qnaIndex}
 		order by commentIndex desc;
 	</select>
 </mapper>
