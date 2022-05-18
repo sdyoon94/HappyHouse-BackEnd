@@ -22,10 +22,8 @@
 
 	<update id="updateQnA" parameterType="QnADto">
 		update `QnA`
-		<trim prefix="set" suffixOverrides=",">
-			<if test="QnATitle != null">QnAtitle = #{QnATitle},</if>
-			<if test="QnAContent != null">QnAContent = #{QnAContent},</if>
-		</trim>
+		set QnATitle = #{QnATitle}, QnAContent = #{QnAContent}
+		where QnAIndex = #{QnAIndex}
 	</update>
 	
 	<delete id="deleteQnA" parameterType="int">
