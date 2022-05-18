@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.CommentMapper">
+	<insert id="registerComment" parameterType="CommentDto">
+		insert into `Comment` (commentContent, commentRegtime, QnAIndex)
+		values (#{commentContent}, now(), #{QnAIndex})
+	</insert>
+	
+	<select id="getCommentList" resultType="CommentDto">
+		select commentIndex, commentContent, commentRegtime, QnAIndex
+		from `comment`
+		where QnAIndex = #{QnAIndex}
+		order by commentIndex desc;
+	</select>
+</mapper>

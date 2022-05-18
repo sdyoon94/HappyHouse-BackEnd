@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.QnAMapper">
+	<insert id="registerQnA" parameterType="QnADto">
+		insert into `QnA` (userId, QnARegtime, QnATitle, QnAContent, private)
+		values (#{userId}, now(), #{QnATitle}, #{QnAContent}, #{private})
+	</insert>
+	
+	<select id="getQnAList" resultType="QnADto">
+		select QnAIndex, userId, QnARegtime, QnATitle, QnAContent, private
+		from `QnA`
+		order by QnAIndex desc;
+	</select>
+	
+	<select id="getQnADetail" parameterType="int" resultType="QnADto">
+		select QnAIndex, userId, QnARegtime, QnATitle, QnAContent, private
+		from `QnA`
+		where QnAIndex = #{qnaIndex}
+	</select>
+
+	<update id="updateQnA" parameterType="QnADto">
+		update `QnA`
+		<trim prefix="set" suffixOverrides=",">
+			<if test="QnATitle != null">QnAtitle = #{QnATitle},</if>
+			<if test="QnAContent != null">QnAContent = #{QnAContent},</if>
+		</trim>
+	</update>
+	
+	<delete id="deleteQnA" parameterType="int">
+		delete from `QnA`
+		where QnAIndex = #{QnAIndex}
+	</delete>
+</mapper>
