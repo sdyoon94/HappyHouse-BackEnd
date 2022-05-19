@@ -23,7 +23,7 @@ public class NewsServiceImpl implements NewsService{
 		Elements contents=doc.select(".sub_read_list_box>dl>dt>a");
 		Elements contents1=doc.select(".sub_read_list_box>p>a>img");
 		Elements contents2=doc.select(".sub_read_list_box>dl>dd>a");
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 8; i++) {
 			list.add(new NewsDto(origin_url+contents1.get(i).attr("src").substring(2), contents.get(i).text(), contents2.get(i).text(), origin_url+contents.get(i).attr("href")));
 		}
 		return list;
