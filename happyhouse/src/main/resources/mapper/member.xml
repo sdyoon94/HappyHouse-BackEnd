@@ -10,6 +10,18 @@
 		where userid = #{userId} and userpwd = #{userPwd}
 	</select>
 
+	<update id="setPw" parameterType="map">
+		update `member` 
+		set userpwd=#{userPwd}
+		where userid=#{userId}
+	</update>
+
+	<select id="checkUser" parameterType="map" resultType="int">
+		select count(*)
+		from `member`
+		where userid = #{userId} and email = #{email}
+	</select>
+
 	<update id="userModify" parameterType="map">
 		update `member` 
 		set userpwd=#{userPwd}, username = #{userName}, email = #{email} 

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ssafy.happyhouse.model.MemberDto;
 import com.ssafy.happyhouse.model.service.MemberService;
 import com.ssafy.happyhouse.util.CryptoUtil;
+import com.ssafy.happyhouse.util.SendEmailUtil;
 
 //회원 처리용 controller
 @Controller
@@ -43,6 +44,20 @@ public class MemberController {
 		}else {
 			return true;
 		}
+	}
+	
+	@PostMapping("/checkuser")
+	@ResponseBody
+	public int checkUser(@RequestBody Map<String, String> map) throws Exception {
+		return memberService.checkUser(map);
+	}
+	
+	@PostMapping("/setpw")
+	@ResponseBody
+	public int setPw(@RequestBody Map<String, String> map) throws Exception {
+		String temppw=SendEmailUtil.SendEmail(map.get("email"));
+		map.put("userPwd", CryptoUtil.sha512(temppw));
+		return memberService.setPw(map);
 	}
 	
 	@PostMapping("/modify")

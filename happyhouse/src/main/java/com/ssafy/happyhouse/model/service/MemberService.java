@@ -20,5 +20,9 @@ public interface MemberService {
 	MemberDto pwCheck(Map<String, String> map);
 
 	int userModify(Map<String, String> map);
+
+	int checkUser(Map<String, String> map);
+
+	int setPw(Map<String, String> map);
 	
 }

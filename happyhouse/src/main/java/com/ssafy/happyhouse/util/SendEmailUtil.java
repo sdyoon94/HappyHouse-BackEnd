@@ -29,8 +29,8 @@ public class SendEmailUtil {
 		int tempPwLength=10;
 		String tempPw=makeTempPw(tempPwLength);
 		
-		final String email="내 이메일 주소";
-		final String password="이메일 비밀번호";
+		final String email="leesh0768@gmail.com";
+		final String password="1q2w3e!@#";
 		
 		Properties prop=new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");

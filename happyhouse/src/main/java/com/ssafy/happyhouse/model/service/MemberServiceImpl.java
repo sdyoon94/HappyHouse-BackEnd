@@ -61,4 +61,14 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.userModify(map);
 	}
 
+	@Override
+	public int checkUser(Map<String, String> map) {
+		return memberMapper.checkUser(map);
+	}
+
+	@Override
+	public int setPw(Map<String, String> map) {
+		return memberMapper.setPw(map);
+	}
+
 }
