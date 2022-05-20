@@ -43,7 +43,7 @@ public class MemberController {
 	public String register() {
 		return "user/join";
 	}
-	
+
 	@GetMapping("/idcheck")
 	public @ResponseBody String idCheck(@RequestParam("ckid") String checkId) throws Exception {
 		logger.debug("아이디 중복 검사 : {}", checkId);
@@ -54,24 +54,27 @@ public class MemberController {
 	}
 
 	@PostMapping("/register")
-	public String register(MemberDto memberDto, Model model) throws Exception {
-		logger.debug("memberDto info : {}", memberDto);
-		memberDto.setUserPwd(CryptoUtil.sha512(memberDto.getUserPwd()));
-		memberService.registerMember(memberDto);
-		return "redirect:/user/login";
+	public @ResponseBody ResponseEntity<?> register(@RequestBody MemberDto memberDto) throws Exception {
+		if (memberService.idCheck(memberDto.getUserId()) == 0) {
+			memberDto.setUserPwd(CryptoUtil.sha512(memberDto.getUserPwd()));
+			memberService.registerMember(memberDto);
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+		}
 	}
-	
+
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody Map<String, String> map) throws Exception {
 		map.replace("userPwd", CryptoUtil.sha512(map.get("userPwd")));
 		MemberDto memberDto = memberService.login(map);
 		if (memberDto != null) {
 			return new ResponseEntity<MemberDto>(memberDto, HttpStatus.OK);
-		}else {
+		} else {
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		}
 	}
-	
+
 	@GetMapping("/list")
 	public String list() {
 		return "user/list";
