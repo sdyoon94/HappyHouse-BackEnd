@@ -29,4 +29,19 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 		return announcementMapper.getAnnouncementInfo(announcementNo);
 	}
 
+	@Override
+	public void registerAnnouncement(AnnouncementDto announcementDto) throws Exception {
+		announcementMapper.registerAnnouncement(announcementDto);
+	}
+
+	@Override
+	public void updateAnnouncement(AnnouncementDto announcementDto) throws Exception {
+		announcementMapper.updateAnnouncement(announcementDto);
+	}
+
+	@Override
+	public void deleteAnnouncement(int announcementNo) throws Exception {
+		announcementMapper.deleteAnnouncement(announcementNo);
+	}
+
 }

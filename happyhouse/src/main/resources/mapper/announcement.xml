@@ -3,6 +3,10 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ssafy.happyhouse.model.mapper.AnnouncementMapper">
+	<insert id="registerAnnouncement" parameterType="AnnouncementDto">
+		insert into `announcement` (userid, regtime, subject, content)
+		values (#{userid}, now(), #{subject}, #{content})
+	</insert>
 
 	<select id="getAnnouncementList" resultType="announcementDto">
 		select announcementNo, userid, subject, content, regtime
@@ -23,5 +27,16 @@
 		WHERE announcementNo=#{announcementNo}
 		order by announcementNo DESC
 	</select>
+	
+	<update id="updateAnnouncement" parameterType="AnnouncementDto">
+		update `announcement`
+		set subject = #{subject}, content = #{content}
+		where announcementNo = #{announcementNo}
+	</update>
+	
+	<delete id="deleteAnnouncement" parameterType="int">
+		delete from `announcement`
+		where announcementNo = #{announcementNo}
+	</delete>
 	
 </mapper>
