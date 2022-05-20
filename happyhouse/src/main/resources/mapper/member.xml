@@ -16,7 +16,7 @@
 	</insert>
 
 	<select id="login" parameterType="map" resultType="MemberDto">
-		select username, userid, email
+		select userid, username, email,joindate as joinDate
 		from `member`
 		where userid = #{userId} and userpwd = #{userPwd}
 	</select>
