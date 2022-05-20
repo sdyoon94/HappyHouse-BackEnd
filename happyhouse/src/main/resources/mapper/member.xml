@@ -4,6 +4,18 @@
 
 <mapper namespace="com.ssafy.happyhouse.model.mapper.MemberMapper">
 
+	<select id="pwCheck" parameterType="map" resultType="MemberDto">
+		select userid, username, email,joindate as joinDate
+		from `member`
+		where userid = #{userId} and userpwd = #{userPwd}
+	</select>
+
+	<update id="userModify" parameterType="map">
+		update `member` 
+		set userpwd=#{userPwd}, username = #{userName}, email = #{email} 
+		where userid=#{userId}
+	</update>
+
 	<select id="idCheck" parameterType="string" resultType="int">
 		select count(userid)
 		from `member`

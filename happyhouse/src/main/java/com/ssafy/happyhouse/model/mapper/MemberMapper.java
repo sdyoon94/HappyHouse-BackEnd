@@ -16,5 +16,9 @@ public interface MemberMapper {
 	MemberDto getMember(String userId) throws Exception;
 	void updateMember(MemberDto memberDto) throws Exception;
 	void deleteMember(String userId) throws Exception;
+
+	MemberDto pwCheck(Map<String, String> map);
+
+	int userModify(Map<String, String> map);
 	
 }

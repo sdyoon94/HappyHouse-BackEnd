@@ -51,4 +51,14 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.deleteMember(userId);
 	}
 
+	@Override
+	public MemberDto pwCheck(Map<String, String> map) {
+		return memberMapper.pwCheck(map);
+	}
+
+	@Override
+	public int userModify(Map<String, String> map) {
+		return memberMapper.userModify(map);
+	}
+
 }

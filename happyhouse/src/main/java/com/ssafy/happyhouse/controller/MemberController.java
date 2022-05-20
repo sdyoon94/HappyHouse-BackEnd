@@ -3,10 +3,6 @@ package com.ssafy.happyhouse.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssafy.happyhouse.model.MemberDto;
-import com.ssafy.happyhouse.model.QnADto;
 import com.ssafy.happyhouse.model.service.MemberService;
 import com.ssafy.happyhouse.util.CryptoUtil;
 
@@ -39,11 +33,25 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@GetMapping("/register")
-	public String register() {
-		return "user/join";
+	@PostMapping("/check")
+	@ResponseBody
+	public boolean pwCheck(@RequestBody Map<String, String> map) throws Exception {
+		map.replace("userPwd", CryptoUtil.sha512(map.get("userPwd")));
+		MemberDto memberDto = memberService.pwCheck(map);
+		if(memberDto==null) {
+			return false;
+		}else {
+			return true;
+		}
 	}
-
+	
+	@PostMapping("/modify")
+	@ResponseBody
+	public int userModify(@RequestBody Map<String, String> map) throws Exception {
+		map.replace("userPwd", CryptoUtil.sha512(map.get("userPwd")));
+		return memberService.userModify(map);
+	}
+	
 	@GetMapping("/idcheck")
 	public @ResponseBody String idCheck(@RequestParam("ckid") String checkId) throws Exception {
 		logger.debug("아이디 중복 검사 : {}", checkId);
