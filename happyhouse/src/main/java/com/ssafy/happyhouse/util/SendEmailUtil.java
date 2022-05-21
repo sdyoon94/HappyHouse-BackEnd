@@ -18,7 +18,7 @@ public class SendEmailUtil {
 	public static String makeTempPw(int tempPwLength) {
 		String tempPw="";
 		for (int i = 0; i < tempPwLength; i++) {
-			//33~126
+			//아스키 코드 값 33~126
 			tempPw+=Character.toString((int)(Math.random()*94)+33);
 		}
 		return tempPw;
@@ -29,8 +29,8 @@ public class SendEmailUtil {
 		int tempPwLength=10;
 		String tempPw=makeTempPw(tempPwLength);
 		
-		final String email="leesh0768@gmail.com";
-		final String password="1q2w3e!@#";
+		final String email=EmailInfo.getEmail();
+		final String password=EmailInfo.getEmailPassword();
 		
 		Properties prop=new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");

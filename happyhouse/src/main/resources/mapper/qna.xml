@@ -5,17 +5,17 @@
 <mapper namespace="com.ssafy.happyhouse.model.mapper.QnAMapper">
 	<insert id="registerQnA" parameterType="QnADto">
 		insert into `QnA` (userId, QnARegtime, QnATitle, QnAContent, private)
-		values (#{userId}, now(), #{QnATitle}, #{QnAContent}, #{private})
+		values (#{userId}, now(), #{QnATitle}, #{QnAContent}, #{private1})
 	</insert>
 	
 	<select id="getQnAList" resultType="QnADto">
-		select QnAIndex, userId, QnARegtime, QnATitle, QnAContent, private
+		select QnAIndex, userId, QnARegtime, QnATitle, QnAContent, private as private1
 		from `QnA`
 		order by QnAIndex desc
 	</select>
 	
 	<select id="getQnADetail" parameterType="int" resultType="QnADto">
-		select QnAIndex, userId, QnARegtime, QnATitle, QnAContent, private
+		select QnAIndex, userId, QnARegtime, QnATitle, QnAContent, private as private1
 		from `QnA`
 		where QnAIndex = #{qnaIndex}
 	</select>

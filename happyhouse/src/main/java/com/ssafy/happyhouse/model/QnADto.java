@@ -6,7 +6,7 @@ public class QnADto {
 	String QnARegtime;
 	String QnATitle;
 	String QnAContent;
-	int Private;
+	int Private1;
 
 	public int getQnAIndex() {
 		return QnAIndex;
@@ -48,17 +48,18 @@ public class QnADto {
 		QnAContent = qnAContent;
 	}
 
-	public int getPrivate() {
-		return Private;
+	public int getPrivate1() {
+		return Private1;
 	}
 
-	public void setPrivate(int private1) {
-		Private = private1;
+	public void setPrivate1(int private1) {
+		Private1 = private1;
 	}
 
 	@Override
 	public String toString() {
 		return "QnADto [QnAIndex=" + QnAIndex + ", userId=" + userId + ", QnARegtime=" + QnARegtime + ", QnATitle="
-				+ QnATitle + ", QnAContent=" + QnAContent + ", Private=" + Private + "]";
+				+ QnATitle + ", QnAContent=" + QnAContent + ", Private1=" + Private1 + "]";
 	}
+	
 }
