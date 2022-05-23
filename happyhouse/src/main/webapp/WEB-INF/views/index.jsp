@@ -49,12 +49,6 @@
 
 		<section id="index_section">
 			<div class="card col-sm-12 mt-1" style="min-height: 850px;">
-				<c:if test="${empty userinfo}">
-					<div class="form-group form-inline justify-content-center">
-						<h2 class="justify-content-center">로그인 후 이용 가능합니다.</h2>
-					</div>
-				</c:if>
-				<c:if test="${!empty userinfo}">
 					<div class="card-body">
 						<div class="form-group form-inline justify-content-center">
 							<label class="mr-2" for="sido">시도 : </label>
@@ -205,7 +199,6 @@
                             //});
                         </script>
 					</div>
-				</c:if>
 			</div>
 		</section>
 	</div>
