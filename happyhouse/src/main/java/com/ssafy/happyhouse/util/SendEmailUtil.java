@@ -19,7 +19,7 @@ public class SendEmailUtil {
 		String tempPw="";
 		for (int i = 0; i < tempPwLength; i++) {
 			//아스키 코드 값 33~126
-			tempPw+=Character.toString((int)(Math.random()*94)+33);
+			tempPw+=(char)(int)((Math.random()*94)+33);
 		}
 		return tempPw;
 	}
