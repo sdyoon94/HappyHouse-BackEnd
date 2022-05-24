@@ -58,6 +58,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int userModify(Map<String, String> map) {
+		System.out.println(map.get("userName"));
+		System.out.println(map.get("email"));
 		return memberMapper.userModify(map);
 	}
 

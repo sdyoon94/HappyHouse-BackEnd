@@ -62,6 +62,7 @@
 		<trim prefix="set" suffixOverrides=",">
 			<if test="userPwd != null">userpwd = #{userPwd},</if>
 			<if test="email != null">email = #{email},</if>
+			<if test="email != null">username = #{userName},</if>
 		</trim>
 		where userid = #{userId}
 	</update>
