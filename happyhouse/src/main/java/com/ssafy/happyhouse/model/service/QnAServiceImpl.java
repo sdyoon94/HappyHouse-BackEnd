@@ -24,11 +24,6 @@ public class QnAServiceImpl implements QnAService{
 	}
 
 	@Override
-	public List<QnADto> getQnASearch(String keyword) throws Exception {
-		return qnaMapper.getQnASearch(keyword);
-	}
-
-	@Override
 	public void updateQnA(QnADto qnaDto) throws Exception {
 		qnaMapper.updateQnA(qnaDto);
 		
@@ -42,5 +37,11 @@ public class QnAServiceImpl implements QnAService{
 	@Override
 	public QnADto getQnADetail(int qnaIndex) throws Exception {
 		return qnaMapper.getQnADetail(qnaIndex);
+	}
+
+	@Override
+	public List<QnADto> getQnASearchList(String searchtitle) {
+		searchtitle="%"+searchtitle+"%";
+		return qnaMapper.getQnASearchList(searchtitle);
 	}
 }

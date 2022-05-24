@@ -8,6 +8,13 @@
 		values (#{userId}, now(), #{QnATitle}, #{QnAContent}, #{private1})
 	</insert>
 	
+	<select id="getQnASearchList" resultType="QnADto" parameterType="String">
+		select QnAIndex, userId, QnARegtime, QnATitle, QnAContent, private as private1
+		from `QnA`
+		where QnATitle like #{searchtitle}
+		order by QnAIndex desc
+	</select>
+	
 	<select id="getQnAList" resultType="QnADto">
 		select QnAIndex, userId, QnARegtime, QnATitle, QnAContent, private as private1
 		from `QnA`

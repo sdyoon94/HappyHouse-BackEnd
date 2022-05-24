@@ -1,6 +1,7 @@
 package com.ssafy.happyhouse.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,16 @@ public class QnAController {
 		return new ResponseEntity<List<QnADto>>(qnaService.getQnAList(), HttpStatus.OK);
 	}
 
+	@PostMapping("/search")
+	public ResponseEntity<?> getQnASearchList(@RequestBody Map<String, String> map) throws Exception {
+		List<QnADto> list = qnaService.getQnASearchList(map.get("searchtitle"));
+		if (list != null && !list.isEmpty()) {
+			return new ResponseEntity<List<QnADto>>(list, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		}
+	}
+	
 	@GetMapping
 	public ResponseEntity<?> getQnAList() throws Exception {
 		List<QnADto> list = qnaService.getQnAList();
