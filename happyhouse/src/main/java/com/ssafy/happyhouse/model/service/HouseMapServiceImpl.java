@@ -41,21 +41,10 @@ public class HouseMapServiceImpl implements HouseMapService {
 		List<HouseSubwayDto> hsList = new ArrayList<HouseSubwayDto>();
 		for(HouseInfoDto i : houseList) {
 			HouseSubwayDto tmp = new HouseSubwayDto();
-			tmp.setAptCode(i.getAptCode());
-			tmp.setAptName(i.getAptName());
-			tmp.setDongCode(i.getDongCode());
-			tmp.setDongName(i.getDongName());
-			tmp.setSidoName(i.getSidoName());
-			tmp.setGugunName(i.getGugunName());
-			tmp.setBuildYear(i.getBuildYear());
-			tmp.setJibun(i.getJibun());
-			tmp.setLat(i.getLat());
-			tmp.setLng(i.getLng());
-			tmp.setImg(i.getImg());
-			tmp.setRecentPrice(i.getRecentPrice());
+			tmp.setHouseInfoDto(i);
 			tmp.setSubwayDistance(Double.MAX_VALUE);
 			for(StationDto j : stationList) {
-				double distance = DistanceUtil.haversine(Double.parseDouble(tmp.getLat()), Double.parseDouble(tmp.getLng()), Double.parseDouble(j.getLat()), Double.parseDouble(j.getLng()));
+				double distance = DistanceUtil.haversine(Double.parseDouble(tmp.getHouseInfoDto().getLat()), Double.parseDouble(tmp.getHouseInfoDto().getLng()), Double.parseDouble(j.getLat()), Double.parseDouble(j.getLng()));
 				if(tmp.getSubwayDistance() > distance) {
 					tmp.setSubwayLine(j.getLine());
 					tmp.setSubwayName(j.getName());
