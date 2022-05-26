@@ -29,7 +29,7 @@
 
 	<update id="updateQnA" parameterType="QnADto">
 		update `QnA`
-		set QnATitle = #{QnATitle}, QnAContent = #{QnAContent}
+		set QnATitle = #{QnATitle}, QnAContent = #{QnAContent}, private=#{private1}
 		where QnAIndex = #{QnAIndex}
 	</update>
 	
