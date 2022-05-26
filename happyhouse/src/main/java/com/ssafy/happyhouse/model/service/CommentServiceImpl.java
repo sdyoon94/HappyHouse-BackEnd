@@ -21,6 +21,7 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public List<CommentDto> getCommentList(int qnaIndex) throws Exception {
+		System.out.println("index : "+qnaIndex);
 		return commentMapper.getCommentList(qnaIndex);
 	}
 }
